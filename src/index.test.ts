@@ -1,4 +1,8 @@
-import { check3by3BoxIsValid, checkColumnIsValid, checkRowIsValid } from ".";
+import {
+  checkRowIsValid,
+  checkColumnIsValid,
+  check3by3BoxIsValid,
+} from "./SudokuSolver";
 
 const puzzleInputA: number[][] = [
   [9, 1, 5, -1, -1, 3, 4, -1, 6],
@@ -62,20 +66,19 @@ describe("checkColumnIsValid", () => {
   });
 });
 
-
 describe("check3by3BoxIsValid", () => {
-    test("top left 3 by 3 box of puzzle input a is valid", () => {
-      expect(check3by3BoxIsValid(0,0, puzzleInputA)).toBe(true);
-    });
-  
-    test("top middle 3 by 3 box puzzle input a is valid", () => {
-      expect(check3by3BoxIsValid(3,1, puzzleInputA)).toBe(true);
-    });
-  
-    test("top right 3 by 3 box puzzle input b is invalid", () => {
-      expect(checkColumnIsValid(0, puzzleInputB)).toBe(false);
-    });
-    test("middle middle 3 by 3 box puzzle input b is invalid", () => {
-      expect(checkColumnIsValid(5, puzzleInputB)).toBe(false);
-    });
+  test("top left 3 by 3 box of puzzle input a is valid", () => {
+    expect(check3by3BoxIsValid(0, 0, puzzleInputA)).toBe(true);
   });
+
+  test("top middle 3 by 3 box puzzle input a is valid", () => {
+    expect(check3by3BoxIsValid(3, 1, puzzleInputA)).toBe(true);
+  });
+
+  test("top right 3 by 3 box puzzle input b is invalid", () => {
+    expect(checkColumnIsValid(0, puzzleInputB)).toBe(false);
+  });
+  test("middle middle 3 by 3 box puzzle input b is invalid", () => {
+    expect(checkColumnIsValid(5, puzzleInputB)).toBe(false);
+  });
+});
