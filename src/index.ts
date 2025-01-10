@@ -1,4 +1,4 @@
-import { solvePropperSudoku } from "./SudokuSolver";
+import { solvePropperSudoku } from "./sudokuSolver";
 
 const puzzleInput: number[][] = [
   [9, 1, 5, -1, -1, 3, 4, -1, 6],
@@ -15,9 +15,9 @@ const puzzleInput: number[][] = [
 ];
 
 console.log("sudoku puzzle input");
-const formattedPuzzleInputAsString = puzzleInput.map((row) =>
-  row.map((cell) => (cell === -1 ? " " : cell)).join(" ")
-).join("\n");
+const formattedPuzzleInputAsString = puzzleInput
+  .map((row) => row.map((cell) => (cell === -1 ? " " : cell)).join(" "))
+  .join("\n");
 console.log(formattedPuzzleInputAsString);
 
 console.log("\n");

@@ -1,8 +1,5 @@
-import {
-  checkRowIsValid,
-  checkColumnIsValid,
-  check3by3BoxIsValid,
-} from "./SudokuSolver";
+import { check3by3BoxIsValid, checkColumnIsValid, checkRowIsValid } from "./sudokuSolver";
+
 
 const puzzleInputA: number[][] = [
   [9, 1, 5, -1, -1, 3, 4, -1, 6],
