@@ -118,53 +118,52 @@ const solvePropperSudoku = (
   y: number,
   arr2d: number[][]
 ): number[][] | undefined => {
-  console.log("fn ran", x, y, arr2d);
-  if (arr2d[y][x] !== -1) {
-    // if location is a clue
-    // console.log(`location ${x}, ${y}, is clue"`);
-     solvePropperSudoku(x == 8 ? 0 : x + 1, x == 8 ? y + 1 : y, arr2d);
-     console.log("back", x, y, arr2d);
 
+  // if location is a clue
+  if (arr2d[y][x] !== -1) {
+
+    if (y === 8 && x === 8) {
+      // end condition
+      return arr2d;
+    }
+    return solvePropperSudoku(x == 8 ? 0 : x + 1, x == 8 ? y + 1 : y, arr2d);
+  
+  // if location has no clue/number in it
   } else {
     for (let i = 1; i <= 9; i++) {
       let arr2dcopy = Array.from(arr2d, (arr) => arr.slice());
 
-      // if(arr2dcopy[y][x] === -1)
-      //     continue;
-
       arr2dcopy[y][x] = i;
-      if (y === 8 && x === 8) {
-        // end condition
-        // console.log("end condition", arr2dcopy);
-        return arr2dcopy;
-      } else {
-        // console.log("block running");
-        let result: number[][] | undefined = undefined;
+      let result: number[][] | undefined = undefined;
 
-        // console.log("i", i);
-        if (numberAtPosXYIsLegal(x, y, arr2dcopy)) {
-          // console.log("exe");
-          result = solvePropperSudoku(
-            x == 8 ? 0 : x + 1,
-            x == 8 ? y + 1 : y,
-            arr2dcopy
-          );
+      if (numberAtPosXYIsLegal(x, y, arr2dcopy)) {
+
+        if (y === 8 && x === 8) {
+          // end condition
+          return arr2dcopy;
         }
+        result = solvePropperSudoku(
+          x == 8 ? 0 : x + 1,
+          x == 8 ? y + 1 : y,
+          arr2dcopy
+        );
 
-        // console.log("result", result);
-
-        if (result) {
-          // return result;
-        } else {
-          // return null;
-        }
-        // if number in position isn't legal continue to next number for this slot -
-        // or if next slot didn't find any number that worked for it
+    
       }
+
+      // console.log("result", result);
+
+      if (result) {
+        // return result;
+        return result;
+      } 
+      // if number in position isn't legal continue to next number for this slot -
+      // or if next slot didn't find any number that worked for it
+
     }
   }
 
-  // if this is reached backtrack will happen
+  // if this is reached backtrack will happen, as value of a function that has no return value is defaulted to undefined
 };
 
 const puzzleInput: number[][] = [
