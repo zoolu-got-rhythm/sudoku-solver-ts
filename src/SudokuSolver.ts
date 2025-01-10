@@ -107,7 +107,7 @@ export const checkRowIsValid = (yIndex: number, arr2d: number[][]) => {
     );
   };
   
-  const solvePropperSudokuRecursive = (
+  const solveProperSudokuRecursive = (
     x: number,
     y: number,
     arr2d: number[][]
@@ -118,7 +118,7 @@ export const checkRowIsValid = (yIndex: number, arr2d: number[][]) => {
         // end condition
         return arr2d;
       }
-      return solvePropperSudokuRecursive(
+      return solveProperSudokuRecursive(
         x == 8 ? 0 : x + 1,
         x == 8 ? y + 1 : y,
         arr2d
@@ -137,7 +137,7 @@ export const checkRowIsValid = (yIndex: number, arr2d: number[][]) => {
             // end condition
             return arr2dcopy;
           }
-          result = solvePropperSudokuRecursive(
+          result = solveProperSudokuRecursive(
             x == 8 ? 0 : x + 1,
             x == 8 ? y + 1 : y,
             arr2dcopy
@@ -157,10 +157,10 @@ export const checkRowIsValid = (yIndex: number, arr2d: number[][]) => {
   
   
   /**
-   * Solves a sudoku puzzle
+   * Solves a proper sudoku puzzle (9x9 with a minimum of 17 clues) with a recursive backtracking algorithm
    * @param puzzleInput - a 9x9 2d array of numbers where -1 represents an empty cell
    * @returns a 9x9 2d array of numbers representing the solved sudoku puzzle
    */
-  export const solvePropperSudoku = (puzzleInput: number[][]): number[][] => {
-    return solvePropperSudokuRecursive(0, 0, puzzleInput) as number[][];
+  export const solveProperSudoku = (puzzleInput: number[][]): number[][] => {
+    return solveProperSudokuRecursive(0, 0, puzzleInput) as number[][];
   };

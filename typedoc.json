@@ -2,5 +2,5 @@
     "entryPoints": ["src/sudokuSolver.ts"],
     "out": "docs",
     "plugin": ["typedoc-plugin-markdown"],
-    "readme": "README.md"  // Avoid duplicating README content
+    "readme": "none"  // Avoid duplicating README content
   }

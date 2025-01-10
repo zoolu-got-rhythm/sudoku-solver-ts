@@ -1,4 +1,4 @@
-import { solvePropperSudoku } from "./sudokuSolver";
+import { solveProperSudoku } from "./sudokuSolver";
 
 const puzzleInput: number[][] = [
   [9, 1, 5, -1, -1, 3, 4, -1, 6],
@@ -22,7 +22,7 @@ console.log(formattedPuzzleInputAsString);
 
 console.log("\n");
 
-const solvedSudoku = solvePropperSudoku(puzzleInput);
+const solvedSudoku = solveProperSudoku(puzzleInput);
 console.log("solved sudoku puzzle");
 const formattedResultAsString = solvedSudoku
   ?.map((row) => row.join(" "))
