@@ -164,12 +164,43 @@ export const solveProperSudoku = (
   puzzleInput: number[][] | number[]
 ): number[][] => {
   // @ts-ignore
-  if (puzzleInput[0][0]) { // if 2d array
-    return solveProperSudokuRecursive(0, 0, puzzleInput as number[][]) as number[][];
-  }else{ // if 1d array
+  if (puzzleInput[0][0]) {
+    // if 2d array
+
+    const puzzleInputAs1dArray = puzzleInput.flat();
+    if (puzzleInputAs1dArray.length !== 9 * 9) {
+      throw new Error("puzzle input must be of length 9 x 9");
+    }
+
+    if (nOfCluesIn1dArrayPuzzleInputIsBelow17(puzzleInputAs1dArray))
+      throw new Error(
+        "puzzle input must contain a minimum of 17 clues or more"
+      );
+
+    return solveProperSudokuRecursive(
+      0,
+      0,
+      puzzleInput as number[][]
+    ) as number[][];
+  } else {
+    // if 1d array
+
+    if (puzzleInput.length !== 9 * 9) {
+      throw new Error("puzzle input must be of length 9 x 9");
+    }
+
+    if (nOfCluesIn1dArrayPuzzleInputIsBelow17(puzzleInput as number[]))
+      throw new Error(
+        "puzzle input must contain a minimum of 17 clues or more"
+      );
+
     // @ts-ignore
     let array2dRepresentationOf1dPuzzle = convert1dArrayto2dArray(puzzleInput);
-    return solveProperSudokuRecursive(0, 0, array2dRepresentationOf1dPuzzle) as number[][];
+    return solveProperSudokuRecursive(
+      0,
+      0,
+      array2dRepresentationOf1dPuzzle
+    ) as number[][];
   }
 };
 
@@ -179,4 +210,9 @@ function convert1dArrayto2dArray(arr: number[]): number[][] {
     arr2d.push(arr.slice(i * 9, i * 9 + 9));
   }
   return arr2d;
+}
+
+function nOfCluesIn1dArrayPuzzleInputIsBelow17(puzzleInput1dArr: number[]) {
+  let n = puzzleInput1dArr.filter((n) => n !== -1).length;
+  return n < 17;
 }
