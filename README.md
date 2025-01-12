@@ -26,7 +26,7 @@ npm run test
 
 > **solveProperSudoku**(`puzzleInput`): `number`[][]
 
-Defined in: sudokuSolver.ts:164
+Defined in: [sudokuSolver.ts:163](https://github.com/zoolu-got-rhythm/sudoku-solver-ts/blob/fd0143fe17b30e8b908cb645207283f7118a189f/src/sudokuSolver.ts#L163)
 
 Solves a proper sudoku puzzle (9x9 with a minimum of 17 clues) with a recursive backtracking algorithm
 
@@ -34,14 +34,12 @@ Solves a proper sudoku puzzle (9x9 with a minimum of 17 clues) with a recursive 
 
 #### puzzleInput
 
-`number`[][]
+a 9x9 2d array (by row) or 1d array of numbers where -1 represents an empty cell
 
-a 9x9 2d array of numbers where -1 represents an empty cell
+`number`[] | `number`[][]
 
 ### Returns
 
 `number`[][]
 
 a 9x9 2d array of numbers representing the solved sudoku puzzle
-
-
